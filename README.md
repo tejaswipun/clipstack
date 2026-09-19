@@ -1,37 +1,46 @@
-This is a template for a whop app built in NextJS. Fork it and keep the parts you need for your app.
+# ClipStack — Content Rewards Analytics for Whop
 
-# Whop NextJS App Template
+A Whop Dashboard View app that gives campaign owners/creators real-time analytics on their Content Rewards campaigns.
 
-To run this project:
+## Features
 
-1. Install dependencies with: `pnpm i`
+- **Budget Intelligence** — Burn rate calculator, forecasting, alert levels
+- **Creator Quality Scoring** — 0-100 scores based on views, approval rate, consistency
+- **Revenue & ROI Tracking** — CPM analysis, platform breakdown, channel comparison
+- **Live Activity Feed** — Real-time webhook events
+- **CSV Export** — Export campaigns, creators, revenue data
+- **Campaign Performance** — Status, budget, spend, views, creators
+- **Creator Leaderboard** — Top performers by earnings
 
-2. Create a Whop App on your [whop developer dashboard](https://whop.com/dashboard/developer/), then go to the "Hosting" section and:
-	- Ensure the "Base URL" is set to the domain you intend to deploy the site on.
-	- Ensure the "App path" is set to `/experiences/[experienceId]`
-	- Ensure the "Dashboard path" is set to `/dashboard/[companyId]`
-	- Ensure the "Discover path" is set to `/discover`
+## Quick Start
 
-3. Copy the environment variables from the `.env.development` into a `.env.local`. Ensure to use real values from the whop dashboard.
+```bash
+npm install
+npm run dev
+```
 
-4. Go to a whop created in the same org as the app you created. Navigate to the tools section and add your app.
+## Environment Variables (.env.local)
 
-5. Run `pnpm dev` to start the dev server. Then in the top right of the window find a translucent settings icon. Select "localhost". The default port 3000 should work.
+```
+NEXT_PUBLIC_WHOP_APP_ID=app_HT52ox6luoJcv
+WHOP_API_KEY=              # Get from Developer Dashboard
+WHOP_WEBHOOK_SECRET=       # Get when creating webhook
+```
 
-## Deploying
+## Deployment
 
-1. Upload your fork / copy of this template to github.
+Connected to Vercel via GitHub. Every push to `main` auto-deploys.
 
-2. Go to [Vercel](https://vercel.com/new) and link the repository. Deploy your application with the environment variables from your `.env.local`
+## Whop Configuration
 
-3. If necessary update you "Base Domain" and webhook callback urls on the app settings page on the whop dashboard.
+- **App path:** `/experiences/[experienceId]`
+- **Dashboard path:** `/dashboard/[companyId]`
+- **Discover path:** `/discover`
 
-## Troubleshooting
+## Tech Stack
 
-**App not loading properly?** Make sure to set the "App path" in your Whop developer dashboard. The placeholder text in the UI does not mean it's set - you must explicitly enter `/experiences/[experienceId]` (or your chosen path name)
-a
-
-**Make sure to add env.local** Make sure to get the real app environment vairables from your whop dashboard and set them in .env.local
-
-
-For more info, see our docs at https://dev.whop.com/introduction
+- Next.js 16.1.1 (App Router)
+- TypeScript
+- Tailwind CSS 4.x
+- @whop/sdk 0.0.3
+- @whop/react 0.3.0
