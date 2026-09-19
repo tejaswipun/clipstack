@@ -14,8 +14,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-	title: "Whop App",
-	description: "My Whop App",
+	title: "ClipStack — Content Rewards Analytics",
+	description: "Track campaign ROI, creator performance, and budget analytics for Whop Content Rewards. Stop guessing, start optimizing.",
 };
 
 export default function RootLayout({
