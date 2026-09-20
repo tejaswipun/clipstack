@@ -9,10 +9,8 @@ export default async function ExperiencePage({
 	params: Promise<{ experienceId: string }>;
 }) {
 	const { experienceId } = await params;
-	// Ensure the user is logged in on whop.
 	const { userId } = await whopsdk.verifyUserToken(await headers());
 
-	// Fetch the neccessary data we want from whop.
 	const [experience, user, access] = await Promise.all([
 		whopsdk.experiences.retrieve(experienceId),
 		whopsdk.users.retrieve(userId),
@@ -20,41 +18,64 @@ export default async function ExperiencePage({
 	]);
 
 	const displayName = user.name || `@${user.username}`;
+	const isAdmin = access.access_level === "admin";
 
 	return (
-		<div className="flex flex-col p-8 gap-4">
-			<div className="flex justify-between items-center gap-4">
-				<h1 className="text-9">
-					Hi <strong>{displayName}</strong>!
-				</h1>
-				<Link href="https://docs.whop.com/apps" target="_blank">
-					<Button variant="classic" className="w-full" size="3">
-						Developer Docs
-					</Button>
-				</Link>
+		<div className="min-h-screen bg-slate-50">
+			<div className="bg-white border-b border-gray-200 px-8 py-6">
+				<div className="flex items-center justify-between">
+					<div>
+						<h1 className="text-2xl font-bold text-gray-900">
+							ClipStack
+						</h1>
+						<p className="text-sm text-gray-500 mt-1">
+							Welcome, {displayName}
+						</p>
+					</div>
+					<div className="flex items-center gap-3">
+						<Link
+							href="https://docs.whop.com/apps"
+							target="_blank"
+						>
+							<Button variant="classic" size="3">
+								Developer Docs
+							</Button>
+						</Link>
+					</div>
+				</div>
 			</div>
 
-			<p className="text-3 text-gray-10">
-				Welcome to you whop app! Replace this template with your own app. To
-				get you started, here's some helpful data you can fetch from whop.
-			</p>
-
-			<h3 className="text-6 font-bold">Experience data</h3>
-			<JsonViewer data={experience} />
-
-			<h3 className="text-6 font-bold">User data</h3>
-			<JsonViewer data={user} />
-
-			<h3 className="text-6 font-bold">Access data</h3>
-			<JsonViewer data={access} />
+			<div className="p-8 max-w-4xl mx-auto">
+				{isAdmin ? (
+					<div className="bg-white rounded-xl border border-gray-200 p-8">
+						<h2 className="text-xl font-bold text-gray-900 mb-4">
+							Analytics Dashboard
+						</h2>
+						<p className="text-gray-600 mb-6">
+							You have admin access. Open the full analytics dashboard for detailed insights.
+						</p>
+						<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+							<div className="bg-indigo-50 rounded-lg p-4">
+								<div className="text-sm text-indigo-600 font-medium">Experience</div>
+								<div className="text-lg font-bold text-gray-900">{experience.name}</div>
+							</div>
+							<div className="bg-indigo-50 rounded-lg p-4">
+								<div className="text-sm text-indigo-600 font-medium">Access Level</div>
+								<div className="text-lg font-bold text-gray-900 capitalize">{access.access_level}</div>
+							</div>
+							<div className="bg-indigo-50 rounded-lg p-4">
+								<div className="text-sm text-indigo-600 font-medium">Products</div>
+								<div className="text-lg font-bold text-gray-900">{experience.products?.length ?? 0}</div>
+							</div>
+						</div>
+					</div>
+				) : (
+					<div className="bg-white rounded-xl border border-gray-200 p-8 text-center">
+						<h2 className="text-xl font-bold text-gray-900 mb-2">Admin Access Required</h2>
+						<p className="text-gray-500">You need admin access to view ClipStack analytics.</p>
+					</div>
+				)}
+			</div>
 		</div>
-	);
-}
-
-function JsonViewer({ data }: { data: any }) {
-	return (
-		<pre className="text-2 border border-gray-a4 rounded-lg p-4 bg-gray-a2 max-h-72 overflow-y-auto">
-			<code className="text-gray-10">{JSON.stringify(data, null, 2)}</code>
-		</pre>
 	);
 }
