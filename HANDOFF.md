@@ -1,185 +1,103 @@
-# ClipStack v2 — Whop Dashboard View App
+# ClipStack — Handoff Document
+
+## What is ClipStack?
+ClipStack is a **Whop Dashboard View app** that provides Content Rewards analytics for campaign owners/creators. It's submitted to the Whop App Store for approval.
+
+## Live URL
+**https://clipstack-black.vercel.app**
 
 ## Architecture
+- **Framework:** Next.js 16.1.1 (App Router)
+- **UI:** Tailwind CSS 4.x, @whop/react 0.3.0
+- **Backend:** @whop/sdk 0.0.3, Vercel serverless functions
+- **Deployment:** Vercel (auto-deploy from GitHub)
+- **Repo:** https://github.com/tejaswipun/clipstack (main branch)
 
-ClipStack is a **Whop Dashboard View app** built on the official template that provides **Content Rewards Analytics** for campaign owners/creators.
+## Pages
+| Route | Type | Description |
+|---|---|---|
+| `/` | Static | Landing page with hero, features, CTAs |
+| `/discover` | Static | App Store listing page with pricing |
+| `/privacy` | Static | Privacy policy |
+| `/dashboard/[companyId]` | Dynamic | Main analytics dashboard (requires Whop auth) |
+| `/experiences/[experienceId]` | Dynamic | Experience view (requires Whop auth) |
+| `/api/webhooks` | Dynamic | Webhook receiver (POST) + event feed (GET) |
 
-- **Runs inside Whop** as an iframe in the creator's dashboard
-- **Uses Whop SDK** for authentication (no custom login needed)
-- **Route:** `/dashboard/[companyId]` — Whop injects the account ID
-- **Deploy to:** Vercel
+## Components
+- `budget-burn-rate.tsx` — Budget burn rate calculator & forecasting
+- `creator-quality-scoring.tsx` — Creator quality scoring (0-100)
+- `revenue-roi-tracking.tsx` — Revenue & ROI with CPM analysis
+- `webhook-activity-feed.tsx` — Live webhook event display
+- `csv-export.tsx` — CSV export functionality
+- `stat-card.tsx` — KPI stat cards
+- `campaign-table.tsx` — Campaign performance table
+- `creator-leaderboard.tsx` — Creator rankings
+- `revenue-chart.tsx` — Revenue chart
 
-## Project Structure
+## Whop Configuration
 
-```
-clipstack-v2/
-├── app/
-│   ├── layout.tsx              # Root layout with <WhopApp> wrapper
-│   ├── globals.css             # Tailwind + Whop Frosted UI
-│   ├── dashboard/
-│   │   └── [companyId]/
-│   │       └── page.tsx        # Main analytics dashboard (admin-only)
-│   ├── discover/
-│   │   └── page.tsx            # App Store listing page
-│   ├── privacy/
-│   │   └── page.tsx            # Privacy policy (required for submission)
-│   └── api/
-│       └── webhooks/
-│           └── route.ts        # Webhook handler + GET for activity feed
-├── components/
-│   ├── stat-card.tsx           # KPI stat cards with change indicators
-│   ├── campaign-table.tsx      # Campaign performance table
-│   ├── creator-leaderboard.tsx # Top creators ranking
-│   ├── revenue-chart.tsx       # Revenue over time chart
-│   ├── budget-burn-rate.tsx    # Budget burn rate calculator & forecasting
-│   ├── creator-quality-scoring.tsx # Creator quality scoring system
-│   ├── revenue-roi-tracking.tsx    # Revenue & ROI tracking
-│   ├── webhook-activity-feed.tsx   # Live webhook activity feed
-│   └── csv-export.tsx          # CSV export functionality
-├── lib/
-│   └── whop-sdk.ts             # SDK singleton initialization
-├── .env.local                  # Environment variables
-├── HANDOFF.md                  # This file
-└── package.json
-```
+### App Details (configured)
+- **App ID:** `app_HT52ox6IuoJEcv`
+- **App Name:** ClipStack
+- **App Type:** B2B app
+- **Base URL:** `https://clipstack-black.vercel.app`
+- **Dashboard path:** `/dashboard/[companyId]`
+- **Discover path:** `/discover`
+- **Experience path:** `/experience/[experienceId]`
 
-## Environment Variables (.env.local)
+### Permissions (configured)
+- `payment:basic:read` — Read payment data for ROI analytics
+- `member:phone:read` — Read member data for creator tracking
+- `company:balance:read` — Read company info for branding
+- `company:authorized_user:read` — Verify admin access
 
-```
-NEXT_PUBLIC_WHOP_APP_ID=app_HT52ox6luoJcv
-WHOP_API_KEY=              # Get from Developer Dashboard
-WHOP_WEBHOOK_SECRET=       # Get when creating webhook
-```
+### Webhooks (configured)
+- **URL:** `https://clipstack-black.vercel.app/api/webhooks`
+- **Events:** invoice.paid, invoice.voided, invoice.past_due, membership.activated, membership.deactivated, entry.created, entry.approved, entry.denied
+- **Signing Secret:** Added to Vercel as `WHOP_WEBHOOK_SECRET`
 
-## How Authentication Works
+### Automated DM (configured)
+- Welcome message sent to creators on install
 
-1. Whop loads the app inside an iframe on whop.com
-2. On every request, Whop injects `x-whop-user-token` header
-3. `whopsdk.verifyUserToken(headers())` validates the JWT
-4. `whopsdk.users.checkAccess(companyId, { id: userId })` checks admin access
-5. No custom login flow needed — Whop handles it all
+## Environment Variables (Vercel)
+| Variable | Type | Status |
+|---|---|---|
+| `WHOP_API_KEY` | Secret | ✅ Added |
+| `WHOP_WEBHOOK_SECRET` | Secret | ✅ Added |
+| `NEXT_PUBLIC_WHOP_APP_ID` | Config | ✅ Added (`app_HT52ox6luoJcv`) |
+| `WHOP_CLIENT_ID` | Secret | ✅ Added |
+| `WHOP_CLIENT_SECRET` | Secret | ✅ Added |
+| `NEXT_PUBLIC_APP_URL` | Config | ✅ Added |
+| `NEXT_PUBLIC_APP_NAME` | Config | ✅ Added |
+| `WHOP_REDIRECT_URI` | Config | ✅ Added |
+| `NODE_ENV` | Config | ✅ Added |
 
-## How to Run Locally
+## Current Status
+- **Published to Whop App Store** — awaiting review (1-7 days)
+- All code builds locally and deploys to Vercel
+- All permissions, webhooks, and env vars configured
 
-```bash
-# Install dependencies
-npm install
-
-# Run the dev proxy (simulates Whop iframe + auth)
-npm run dev
-```
-
-The dev proxy runs on port 3000 and injects the auth token automatically.
-
-To preview in Whop:
-1. Install the app on your Whop account
-2. Open the app in Whop dashboard
-3. Click the cog/settings icon → Select "localhost"
-
-## Dashboard Features
-
-### 1. Stats Overview (Real Data)
-- **Total Revenue** — from Whop payments API
-- **Total Members** — from Whop members API
-- **Active Members**
-- **Retention Rate** — calculated from active/total
-
-### 2. Budget Intelligence
-- **Budget Burn Rate Calculator** — tracks daily spend rate
-- **Forecasting** — projects when budget will run out
-- **Alert Levels** — safe/warning/critical based on days remaining
-- **Burn Velocity** — accelerating/steady/decelerating trends
-- **Quick Actions** — adjust CPM, pause campaign, view breakdown
-
-### 3. Revenue & ROI Tracking
-- **ROI Score** — return on investment percentage
-- **CPM Analysis** — your CPM vs industry benchmark
-- **Platform Breakdown** — TikTok vs YouTube Shorts vs Instagram Reels vs X
-- **Channel Comparison** — Content Rewards vs Meta Ads vs Google Ads vs Influencer Deals
-
-### 4. Campaign Performance Table
-- Campaign name, status, budget, spent, views, creators
-- Burn rate visualization
-- CPM calculation
-
-### 5. Creator Quality Scoring
-- **Overall Score** (0-100) based on multiple metrics
-- **Metrics:** Views per clip, Approval rate, Consistency, Niche relevance
-- **Status badges:** Top Performer, Good, Average, At Risk, Flagged
-- **Growth trends:** Up, Stable, Down
-- **Filter & Sort** by score, views, or earnings
-
-### 6. Creator Leaderboard
-- Top performers by earnings
-- Views, clips, average views per clip
-
-### 7. Revenue Chart
-- 30-day revenue trend
-- Daily average calculation
-- Total views
-
-### 8. Live Activity Feed
-- Real-time webhook events
-- Event types: payments, memberships, entries
-- Visual indicators for processed events
-
-### 9. CSV Export
-- Export campaigns, creators, or revenue data
-- Formatted for spreadsheets
-- Timestamped filenames
-
-## Whop Webhook Events Handled
-
-- `invoice.paid` — Payment received
-- `invoice.voided` — Payment voided
-- `invoice.past_due` — Payment past due
-- `membership.activated` — New member
-- `membership.deactivated` — Member left
-- `entry.created` — New content entry
-- `entry.approved` — Entry approved
-- `entry.denied` — Entry denied
-
-## Deployment Steps
-
-1. **Get Whop API Key** from Developer Dashboard
-2. **Create GitHub repo** and push code
-3. **Deploy to Vercel** and connect to GitHub
-4. **Configure Whop Dashboard** with Vercel URL
-5. **Add Permissions** in Whop (payments, members, companies)
-6. **Create Webhooks** for real-time updates
-7. **Test with real account**
-8. **Submit for Whop review**
-
-## Whop Submission Requirements
-
-- [ ] App Name: ClipStack
-- [ ] Contact Email
-- [ ] Privacy Policy URL (built at /privacy)
-- [ ] App Description
-- [ ] Tested with at least 1 Whop member
-- [ ] Filled out App Submission form
+## When Review is Approved
+1. Check the Whop Developer Dashboard for approval status
+2. Test with a real Whop account — install the app
+3. Verify the dashboard loads with real data
+4. Monitor webhook events flowing in
+5. Start marketing to Content Rewards campaign owners
 
 ## Pricing Model
-
 - **Starter:** Free (1 campaign, basic stats, 7-day history)
-- **Pro:** $49/mo (unlimited campaigns, creator rankings, budget forecasting, 90-day history, CSV export)
-- **Agency:** $149/mo (multi-brand, white-label reports, API access, team seats)
+- **Pro:** $49/mo (unlimited campaigns, creator rankings, budget forecasting)
+- **Agency:** $149/mo (multi-brand, white-label, API access)
 
-## Key Differences from v1
+## Key Research Findings
+- $40K+/day Content Rewards payouts, ~1M videos/month
+- ZERO analytics tools exist for campaign owners
+- Top pain points: fraud detection, budget tracking, creator scoring
+- Whop fee: 2.7% + $0.30 domestic, 0% marketplace commission
+- $500+ products = 6% of catalog but 56% of revenue
+- Successful apps: $10-50/mo pricing sweet spot
 
-| v1 (Standalone) | v2 (Whop App) |
-|----------------|---------------|
-| Custom login page | Whop handles auth |
-| Runs on its own URL | Embedded in Whop iframe |
-| Mock data | Real Whop API data |
-| No integration | Full Whop SDK integration |
-| Standalone website | Dashboard View app |
-| Basic stats only | Budget forecasting, creator scoring, ROI tracking |
-
-## Tech Stack
-
-- **Next.js 16.1.1** with App Router
-- **TypeScript**
-- **Tailwind CSS 4.x**
-- **@whop/sdk 0.0.3**
-- **@whop/react 0.3.0**
+## Files
+- `clipstack-v2/` — Main project directory
+- `WHOP-SUBMISSION-GUIDE.md` — Step-by-step submission guide
+- `HANDOFF.md` — This file
