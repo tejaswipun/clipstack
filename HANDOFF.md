@@ -1,7 +1,10 @@
 # ClipStack — Handoff Document
 
-> **Last updated:** Monday, September 21, 2026 — 12:15 AM (UTC+4)
+> **Last updated:** Monday, September 21, 2026 — 12:30 AM (UTC+4)
 > **Status:** Published to Whop App Store — awaiting review
+> **Workspace:** `C:\Users\tejaswi\OneDrive\Desktop\clipping`
+> **Project:** `clipstack-v2/` (the v2 Whop Dashboard View app)
+> **Note:** Old v1 directories (`clipper-command-center/`, `clipstack/`, `src/`, `data/`) have been cleaned up from workspace. Only `clipstack-v2/` remains as the active project.
 
 ---
 
@@ -171,3 +174,39 @@ ClipStack is a **Whop Dashboard View app** that provides Content Rewards analyti
 - `clipstack-v2/` — Main project directory
 - `WHOP-SUBMISSION-GUIDE.md` — Step-by-step submission guide
 - `HANDOFF.md` — This file
+
+---
+
+## Session Continuity
+
+### Owner
+- **Name:** Tejaswi
+- **GitHub:** @tejaswipun
+- **Whop Account:** Connected
+- **Vercel Account:** Connected (tejaswipun)
+
+### Key URLs
+| Service | URL |
+|---|---|
+| Live App | https://clipstack-black.vercel.app |
+| GitHub Repo | https://github.com/tejaswipun/clipstack |
+| Vercel Dashboard | https://vercel.com/tejaswipun/clipstack |
+| Whop Developer Dashboard | https://whop.com/dashboard/biz_IiQiokbVKdkVja/developer/apps/app_HT52ox6IuoJEcv/ |
+| Whop Webhook Settings | https://whop.com/dashboard/biz_IiQiokbVKdkVja/developer/apps/app_HT52ox6IuoJEcv/webhooks |
+
+### Whop Credentials (stored in Vercel)
+| Secret | Location |
+|---|---|
+| WHOP_API_KEY | Vercel → Settings → Environment Variables (Secret) |
+| WHOP_WEBHOOK_SECRET | Vercel → Settings → Environment Variables (Secret) |
+| WHOP_CLIENT_ID | Vercel → Settings → Environment Variables (Secret) |
+| WHOP_CLIENT_SECRET | Vercel → Settings → Environment Variables (Secret) |
+
+### Known Issues
+- **Old `clipstack/` directory:** OneDrive-locked node_modules, harmless leftover from v1. Can be ignored or manually deleted when OneDrive isn't syncing.
+- **Node engine warnings:** Build warns about Node 18/20 requirement but builds fine on v24.19.0.
+- **`@whop/react` postinstall:** Fails on first `npm install` due to missing `styles.css`. Fixed by running `npm install` twice or the `.npmrc` override.
+
+### What Was Abandoned
+- **v1 (clipstack/):** Standalone Python/Next.js app, wrong architecture (not a Whop Dashboard View). Abandoned Sep 19, 2026.
+- **Old files:** `ARCHITECTURE.md`, `BUSINESS_PLAN.md`, `CHANGELOG.md`, `CONTRIBUTING.md`, `DEEP_RESEARCH.md`, `MARKET_RESEARCH.md`, `SECURITY.md`, `LICENSE`, `README.md`, `run.py`, `test_api.py`, `requirements.txt`, `config.json`, `styles.css`, `.env.example`, `.editorconfig` — all removed Sep 21, 2026.
