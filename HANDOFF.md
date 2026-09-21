@@ -1,10 +1,43 @@
 # ClipStack — Handoff Document
 
+> **Last updated:** Monday, September 21, 2026 — 12:15 AM (UTC+4)
+> **Status:** Published to Whop App Store — awaiting review
+
+---
+
 ## What is ClipStack?
-ClipStack is a **Whop Dashboard View app** that provides Content Rewards analytics for campaign owners/creators. It's submitted to the Whop App Store for approval.
+ClipStack is a **Whop Dashboard View app** that provides Content Rewards analytics for campaign owners/creators. It's the first dedicated analytics tool for Whop's $1.2B/year Content Rewards ecosystem.
 
 ## Live URL
 **https://clipstack-black.vercel.app**
+
+---
+
+## Project Timeline
+
+| Date | Milestone | Status |
+|---|---|---|
+| Sep 17, 2026 | Whop account created, API key generated | ✅ Done |
+| Sep 17, 2026 | v1 standalone app built (wrong architecture) | ✅ Done (abandoned) |
+| Sep 19, 2026 | Market research completed (10 pain points, pricing) | ✅ Done |
+| Sep 19, 2026 | v2 cloned from Whop template, dependencies installed | ✅ Done |
+| Sep 19-20, 2026 | v2 feature components built (9 components) | ✅ Done |
+| Sep 20, 2026 | Webhook handler enhanced (8 event types) | ✅ Done |
+| Sep 20, 2026 | Dashboard page built with all components | ✅ Done |
+| Sep 20, 2026 | Code committed and force-pushed to GitHub | ✅ Done |
+| Sep 20, 2026 | Vercel deployment fixed (discovered clipstack-black.vercel.app) | ✅ Done |
+| Sep 21, 2026 12:00 AM | Landing page, app icon, store description built | ✅ Done |
+| Sep 21, 2026 12:00 AM | Webhook created in Whop Developer Dashboard | ✅ Done |
+| Sep 21, 2026 12:05 AM | 4 permissions added in Whop | ✅ Done |
+| Sep 21, 2026 12:10 AM | WHOP_WEBHOOK_SECRET added to Vercel | ✅ Done |
+| Sep 21, 2026 12:12 AM | Experience page template text cleaned up | ✅ Done |
+| Sep 21, 2026 12:15 AM | **App published to Whop App Store** | ✅ Done |
+| Sep 21-28, 2026 | Awaiting Whop review (1-7 days) | ⏳ Waiting |
+| Sep 28, 2026 | Target: Whop approval received | 🎯 Target |
+| Sep 29, 2026 | Target: First real user installs ClipStack | 🎯 Target |
+| Oct 1, 2026 | Target: Marketing push begins | 🎯 Target |
+
+---
 
 ## Architecture
 - **Framework:** Next.js 16.1.1 (App Router)
@@ -12,6 +45,7 @@ ClipStack is a **Whop Dashboard View app** that provides Content Rewards analyti
 - **Backend:** @whop/sdk 0.0.3, Vercel serverless functions
 - **Deployment:** Vercel (auto-deploy from GitHub)
 - **Repo:** https://github.com/tejaswipun/clipstack (main branch)
+- **Node:** v24.19.0 (builds successfully despite engine warnings)
 
 ## Pages
 | Route | Type | Description |
@@ -33,6 +67,8 @@ ClipStack is a **Whop Dashboard View app** that provides Content Rewards analyti
 - `campaign-table.tsx` — Campaign performance table
 - `creator-leaderboard.tsx` — Creator rankings
 - `revenue-chart.tsx` — Revenue chart
+
+---
 
 ## Whop Configuration
 
@@ -72,22 +108,54 @@ ClipStack is a **Whop Dashboard View app** that provides Content Rewards analyti
 | `WHOP_REDIRECT_URI` | Config | ✅ Added |
 | `NODE_ENV` | Config | ✅ Added |
 
-## Current Status
-- **Published to Whop App Store** — awaiting review (1-7 days)
-- All code builds locally and deploys to Vercel
-- All permissions, webhooks, and env vars configured
-
-## When Review is Approved
-1. Check the Whop Developer Dashboard for approval status
-2. Test with a real Whop account — install the app
-3. Verify the dashboard loads with real data
-4. Monitor webhook events flowing in
-5. Start marketing to Content Rewards campaign owners
+---
 
 ## Pricing Model
-- **Starter:** Free (1 campaign, basic stats, 7-day history)
-- **Pro:** $49/mo (unlimited campaigns, creator rankings, budget forecasting)
-- **Agency:** $149/mo (multi-brand, white-label, API access)
+| Tier | Price | Features |
+|---|---|---|
+| Starter | Free | 1 campaign, basic stats, 7-day history |
+| Pro | $49/mo | Unlimited campaigns, creator rankings, budget forecasting, 90-day history, CSV export |
+| Agency | $149/mo | Multi-brand management, white-label reports, API access, team seats |
+
+---
+
+## Next Steps
+
+### Immediate (Waiting for Whop Review)
+- [ ] Monitor email for Whop approval notification
+- [ ] Check Whop Developer Dashboard → Builds tab for status
+- [ ] If rejected: read rejection reason, fix, resubmit
+
+### Post-Approval (Day 1)
+- [ ] Install ClipStack on own Whop account
+- [ ] Test dashboard with real data
+- [ ] Verify webhook events flow in
+- [ ] Test all pages (/dashboard, /discover, /privacy)
+
+### Marketing Phase (Week 1)
+- [ ] Optimize App Store listing (title, description, screenshots)
+- [ ] Create launch post for Whop Townhall
+- [ ] Post on Twitter/X with demo GIF
+- [ ] Post on r/whop, r/SaaS, r/entrepreneur
+- [ ] DM 10 Content Rewards campaign owners
+- [ ] Create a "Why ClipStack" blog post
+
+### Growth Phase (Week 2-4)
+- [ ] Get first 10 paying users
+- [ ] Collect feedback and iterate
+- [ ] Add requested features
+- [ ] Build referral program
+- [ ] Start content marketing (Twitter threads, blog posts)
+- [ ] Reach out to Whop influencers for reviews
+
+### Scale Phase (Month 2-3)
+- [ ] Hit $1K MRR
+- [ ] Launch annual plan discount
+- [ ] Add API access for Agency tier
+- [ ] Partner with Content Rewards campaign owners
+- [ ] Get featured on Whop blog
+
+---
 
 ## Key Research Findings
 - $40K+/day Content Rewards payouts, ~1M videos/month
@@ -96,6 +164,8 @@ ClipStack is a **Whop Dashboard View app** that provides Content Rewards analyti
 - Whop fee: 2.7% + $0.30 domestic, 0% marketplace commission
 - $500+ products = 6% of catalog but 56% of revenue
 - Successful apps: $10-50/mo pricing sweet spot
+- First review typically 1-7 days; resubmissions can take longer
+- Apps with clear value prop and complete builds get approved faster
 
 ## Files
 - `clipstack-v2/` — Main project directory
