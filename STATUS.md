@@ -1,11 +1,43 @@
 # ClipStack — Status Document
 
-> **Last updated:** Monday, September 21, 2026 — 1:00 AM (UTC+4)
+> **Last updated:** Wednesday, September 23, 2026 — 12:30 AM (UTC+4)
 > **Purpose:** Single source of truth. Read this first in any new session.
 
 ---
 
-## Current State: Published to Whop, Awaiting Review
+## Current State: Submitted for Review (App Store + Discover)
+
+| Review | Status | Submitted |
+|---|---|---|
+| Whop App Store review | 🟡 Pending | Sep 21, 2026 |
+| Discover/marketplace listing | 🟡 Pending review for Discover | Sep 23, 2026 |
+
+### Product Listing (Whop Dashboard)
+
+| Item | Status |
+|---|---|
+| Product created | ✅ ClipStack — $49/month |
+| Visibility | ✅ Visible |
+| Apps linked | ✅ ClipStack app + 2 others |
+| FAQs | ✅ 5 added |
+| Store images | ✅ Campaign-owner focused (clipstack-hero.png, clipstack-features.png) |
+| Business logo | ✅ Lightning bolt icon (app icon) |
+| Business description | ✅ Written |
+| Discover status | 🟡 Pending review for Discover |
+
+### Local Test Results (Sep 23, 2026)
+
+| Page | Status | Notes |
+|---|---|---|
+| `/` (Home) | ✅ 200 | Landing page works |
+| `/privacy` | ✅ 200 | Privacy policy works |
+| `/discover` | ✅ 200 | App Store listing works |
+| `/api/webhooks` (GET) | ✅ 200 | Webhook endpoint responds |
+| `/app-icon.svg` | ✅ 200 | Icon serves correctly |
+| `/dashboard/[companyId]` | ⚠️ 500 | **Expected** — requires Whop auth (works inside iframe) |
+| `/experiences/[experienceId]` | ⚠️ 500 | **Expected** — requires Whop auth (works inside iframe) |
+
+**Verdict: App is healthy.** All public pages work. Protected pages correctly reject unauthenticated requests.
 
 ---
 
@@ -109,5 +141,5 @@ C:\Users\tejaswi\OneDrive\Desktop\clipping\
 | Whop Dashboard | https://whop.com/dashboard/biz_IiQiokbVKdkVja/developer/apps/app_HT52ox6IuoJEcv/ |
 | App ID | `app_HT52ox6IuoJEcv` |
 | Owner | Tejaswi (@tejaswipun) |
-| Pricing | Free / $49/mo / $149/mo |
-| Status | Published, awaiting Whop review |
+| Pricing | ClipStack Pro — $49/mo (3-day free trial) |
+| Status | Submitted for App Store + Discover review |

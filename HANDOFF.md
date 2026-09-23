@@ -1,8 +1,8 @@
 # ClipStack — Handoff Document
 
 > **Owner:** Tejaswi (@tejaswipun)
-> **Last updated:** Monday, September 21, 2026 — 1:00 AM (UTC+4)
-> **Status:** Published to Whop App Store — awaiting review
+> **Last updated:** Wednesday, September 23, 2026 — 12:30 AM (UTC+4)
+> **Status:** Submitted for App Store + Discover review — both pending
 
 ---
 
@@ -28,8 +28,11 @@ First dedicated analytics dashboard for Whop Content Rewards campaign owners. So
 | Sep 21, 2026 12:05 AM | 4 permissions added in Whop |
 | Sep 21, 2026 12:10 AM | WHOP_WEBHOOK_SECRET added to Vercel |
 | Sep 21, 2026 12:15 AM | **App published to Whop App Store** |
-| Sep 21-28, 2026 | Awaiting Whop review (1-7 days) |
-| Sep 28, 2026 | Target: Whop approval |
+| Sep 23, 2026 12:00 AM | Product listing completed (logo, images, FAQs, description) |
+| Sep 23, 2026 12:12 AM | **Submitted for Discover/marketplace listing** |
+| Sep 23, 2026 12:30 AM | Local test: all pages healthy, docs updated |
+| Sep 21-28, 2026 | Awaiting Whop App Store review (1-7 days) |
+| Sep 23-30, 2026 | Awaiting Discover review (1-7 days) |
 | Oct 1, 2026 | Target: Marketing push begins |
 
 ---
@@ -51,9 +54,8 @@ First dedicated analytics dashboard for Whop Content Rewards campaign owners. So
 WHOP_API_KEY, WHOP_WEBHOOK_SECRET, WHOP_CLIENT_ID, WHOP_CLIENT_SECRET, NEXT_PUBLIC_WHOP_APP_ID, NEXT_PUBLIC_APP_URL, NEXT_PUBLIC_APP_NAME, WHOP_REDIRECT_URI, NODE_ENV
 
 ### Pricing
-- Starter: Free (1 campaign, basic stats)
-- Pro: $49/mo (unlimited, rankings, forecasting)
-- Agency: $149/mo (multi-brand, white-label, API)
+- ClipStack Pro: $49/mo (3-day free trial)
+- Single tier — simplified for launch
 
 ---
 
@@ -63,21 +65,23 @@ WHOP_API_KEY, WHOP_WEBHOOK_SECRET, WHOP_CLIENT_ID, WHOP_CLIENT_SECRET, NEXT_PUBL
 |---|---|
 | `STATUS.md` | **READ THIS FIRST** — What's real vs mock, current state |
 | `README.md` | Technical reference (features, structure, env vars) |
+| `LAUNCH-PLAYBOOK.md` | Cold DMs, tweets, Reddit posts, Townhall — ready to copy-paste |
 | `WHOP-SUBMISSION-GUIDE.md` | Step-by-step submission guide |
 
 ---
 
 ## Next Steps
 
-### Waiting for Review
-- [ ] Monitor email for Whop approval
+### Waiting for Review (both pending)
+- [ ] Monitor email for Whop App Store approval
+- [ ] Monitor Discover listing status (Dashboard → Products → Discover status)
 - [ ] Check Developer Dashboard → Builds tab
 
 ### After Approval
 - [ ] Install on own Whop account
 - [ ] Test dashboard with real data
 - [ ] Verify webhook events flow in
-- [ ] Start marketing push
+- [ ] Start marketing push (see LAUNCH-PLAYBOOK.md)
 
 ### Marketing Phase
 - [ ] Optimize App Store listing
