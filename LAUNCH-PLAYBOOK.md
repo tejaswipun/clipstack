@@ -1,8 +1,9 @@
 # ClipStack — Launch Playbook
 
-> **Last updated:** Wednesday, September 23, 2026 — 12:30 AM (UTC+4)
+> **Last updated:** Wednesday, September 23, 2026 — 12:45 AM (UTC+4)
 > **Purpose:** Copy-paste marketing assets ready for launch day.
 > **Target:** Content Rewards campaign owners spending $5K–$50K/month.
+> **See also:** `TARGET-RESEARCH.md` — who to DM, what they complain about, feature priorities.
 
 ---
 
@@ -15,37 +16,97 @@
 - Anyone tired of guessing which creators actually drive revenue
 
 **Where they hang out:**
+- **X (Twitter)** — PRIMARY channel. Content Rewards community is very active here
 - Whop Townhall (whop.com/townhall)
-- Twitter/X (Content Rewards community)
 - Reddit (r/ContentRewards, r/Whop, r/marketing)
 - Discord servers for Whop sellers
-- LinkedIn (agency owners, DTC brands)
+
+**X accounts to target first:** See `TARGET-RESEARCH.md` for full list
 
 ---
 
-## 1. Cold DM Template (Twitter/X)
+## 1. Cold DM Templates (X/Twitter)
 
-### Version A: Direct (for active Content Rewards posters)
+### Version A: Bot views pain (for frustrated campaign owners)
 
-```
-Hey [name] — saw you're running Content Rewards campaigns on Whop.
-
-I built ClipStack: a dashboard that shows which creators actually drive revenue, where your budget burns fastest, and your real ROI.
-
-Most campaign owners are flying blind on this stuff. $49/mo, 3-day free trial.
-
-Worth a look? [link]
-```
-
-### Version B: Soft (for agency owners)
+*Use when: they've complained about fake/bot engagement*
 
 ```
-Hey [name] — quick question: do you track ROI across your Whop Content Rewards campaigns?
+Hey [name] — saw your post about [bot views / AI clips / fake engagement].
 
-I'm building ClipStack for exactly that — creator leaderboards, budget burn tracking, revenue attribution. $49/mo.
+That's exactly why I built ClipStack. It flags creators with suspicious engagement patterns so you stop paying for bot views.
 
-No pitch if you're not interested. Just thought it was relevant given [specific thing they posted about].
+$49/mo, 3-day free trial. Want a look? [link]
 ```
+
+### Version B: Data blindness pain (for "I have no idea what's working" energy)
+
+*Use when: they're spending but not tracking ROI*
+
+```
+Hey [name] — you're spending on Content Rewards but have zero data on which creators actually drive revenue.
+
+ClipStack shows: creator rankings by real revenue, budget burn forecasts, and ROI per campaign.
+
+No more flying blind. $49/mo, 3-day trial. [link]
+```
+
+### Version C: Benchmarking pain (for data-driven campaign owners)
+
+*Use when: they ask about CPM rates or campaign performance*
+
+```
+Hey [name] — quick question: do you know if your CPM rate is competitive?
+
+I built ClipStack — a dashboard that benchmarks your CPM against industry averages, tracks budget burn, and scores creator quality.
+
+$49/mo, 3-day free trial. Worth a look? [link]
+```
+
+### Version D: Budget burn pain (for campaigns running out of money)
+
+*Use when: they mention budget depletion or campaign ending*
+
+```
+Hey [name] — noticed your [campaign name] budget is burning fast.
+
+ClipStack forecasts exactly when your budget dies at current velocity, so you can adjust CPM or pause before it's too late.
+
+$49/mo, 3-day trial. Want me to send a demo? [link]
+```
+
+### Version E: Soft/warm (for people you've engaged with first)
+
+*Use after: liking/replying to their posts for 2-3 days*
+
+```
+Hey [name] — been following your Content Rewards stuff. Curious: how are you tracking which creators actually drive revenue?
+
+I built ClipStack for exactly that. No pitch if you're not interested, just thought it was relevant.
+```
+
+### Version F: Reply to Chris's thread (for people who engaged with @chrisgirbu)
+
+*Use when: they replied to or retweeted the "Content Rewards is a scam" thread*
+
+```
+Hey [name] — saw your reply to Chris's thread. The "no data to learn from" point hit hard.
+
+I'm building ClipStack — a dashboard that gives campaign owners the data they're missing: which creators are real, where budget goes, actual ROI.
+
+$49/mo, 3-day trial. Would love your thoughts: [link]
+```
+
+---
+
+### DM Rules
+
+- **Warm up first:** Like/reply to their posts for 2-3 days before DMing
+- **Personalize:** Reference something specific they posted
+- **5 DMs per day max** (avoid spam filters)
+- **1 follow-up max** — if no reply after 3 days, move on
+- **Track everything** in the spreadsheet at the bottom of this file
+- **Don't pitch to everyone** — some are creators, not campaign owners. Check first.
 
 ### Version C: Value-first (for busy people)
 
@@ -225,32 +286,40 @@ If you're running Content Rewards campaigns and tired of guessing, give it a loo
 - [ ] STATUS.md updated ✅
 - [ ] HANDOFF.md updated ✅
 - [ ] LAUNCH-PLAYBOOK.md written ✅
+- [ ] TARGET-RESEARCH.md written ✅
 - [ ] App tested locally ✅
 - [ ] Wait for App Store approval
 - [ ] Wait for Discover approval
+- [ ] **DO NOT push code to GitHub until review approved** (Vercel auto-deploys)
+
+### Build locally (while waiting, don't push)
+- [ ] CPM Benchmarking feature
+- [ ] Bot View Alerts feature
+- [ ] Budget Burn Forecast feature
+- [ ] Push all code AFTER review approval
 
 ### Launch day (when approved)
+- [ ] Push all built features to GitHub (deploys to Vercel)
 - [ ] Install app on own Whop account
 - [ ] Test with real data
 - [ ] Verify webhooks fire
+- [ ] Warm up Tier 1 X targets (like/reply — see TARGET-RESEARCH.md)
 - [ ] Post Twitter thread (Tweet 1 → 2 → 3)
 - [ ] Post on Whop Townhall
 - [ ] Post on Reddit (1 subreddit at a time)
-- [ ] Send 5-10 cold DMs
-- [ ] Post on LinkedIn
+- [ ] Send 5 cold DMs using pain-point templates
 
 ### Week 1 after launch
-- [ ] Send 5-10 cold DMs per day
+- [ ] Warm up X targets for 2-3 days, then DM
+- [ ] Send 5 cold DMs per day (pain-point templates)
 - [ ] Respond to all comments/replies
 - [ ] Track signups and trials
 - [ ] Collect feedback from first users
-- [ ] Iterate on product based on feedback
 
 ### Week 2-4
 - [ ] Content marketing (Twitter threads, blog posts)
 - [ ] Reach out to Content Rewards influencers
-- [ ] Consider paid ads (Twitter, Reddit)
-- [ ] Apply for Whop marketplace features/badges
+- [ ] Iterate on product based on feedback
 
 ---
 
@@ -287,15 +356,16 @@ If you're running Content Rewards campaigns and tired of guessing, give it a loo
 
 Create a simple spreadsheet to track:
 
-| Channel | Date | Sent/Posted | Responses | Signups | Notes |
-|---|---|---|---|---|---|
-| Twitter DM | | | | | |
-| Reddit | | | | | |
-| Townhall | | | | | |
-| LinkedIn | | | | | |
+| Account | Date | Warmed up? | DM sent? | Template used | Response? | Notes |
+|---|---|---|---|---|---|---|
+| @chrisgirbu | | | | | | |
+| @findclout | | | | | | |
+| @natiakourdadze | | | | | | |
+| @hvsseinidi | | | | | | |
+| @direprimary | | | | | | |
 
 **Targets (first month):**
-- 50-100 cold DMs sent
-- 10-20 responses
+- 25-50 cold DMs sent (5/day, X only)
+- 10-15 responses
 - 5-10 trial signups
 - 1-3 paying customers
